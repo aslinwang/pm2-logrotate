@@ -62,7 +62,7 @@ function get_limit_size() {
 
 function delete_old(file) {
   if (file === "/dev/null") return;
-  var fileBaseName = file.substr(0, file.length - 4).split('/').pop() + "__";
+  var fileBaseName = file.substr(0, file.length).split('/').pop() + "-";
   var dirName = path.dirname(file);
 
   fs.readdir(dirName, function(err, files) {
@@ -104,7 +104,7 @@ function proceed(file) {
       // use default
     }
   }
-  var final_name = file.substr(0, file.length - 4) + '__' + final_time + '.log';
+  var final_name = file.substr(0, file.length) + '-' + final_time + '.log';
   // if compression is enabled, add gz extention and create a gzip instance
   if (COMPRESSION) {
     var GZIP = zlib.createGzip({ level: zlib.Z_BEST_COMPRESSION, memLevel: zlib.Z_BEST_COMPRESSION });
